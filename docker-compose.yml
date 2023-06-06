@@ -1,0 +1,26 @@
+version: "3"
+services:
+  node-app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=${PORT}
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+
+  db:
+    container_name: node-akia-mongo
+    image: mongo:latest
+    ports:
+      - 27018:27017
+    volumes:
+      - mongo-db:/data/db/
+  redis:
+    image: redis
+    
+  
+volumes:
+  mongo-db:

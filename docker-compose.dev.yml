@@ -1,0 +1,30 @@
+version: "3"
+services:
+  node-app:
+    build: 
+      context: .
+      args:
+        NODE_ENV: development
+    container_name: node-akia-dev
+    image: ${IMAGE_Name}-dev
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGO_USER=sarim
+      - MONGO_PASSWORD=pass
+      - SESSION_SECRET=mypass
+      - TOKEN_KEY=goK!pusp6ThEdURUtRenOwUhAsWUCLheBazl!uJLPlS8EbreWLdrupIwabRAsiBu
+    command: npm run dev
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sarim
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+      
+
+
+
+
+

@@ -1,0 +1,16 @@
+version: "3"
+services:
+  node-app:
+    container_name: node-akia
+    image: ${IMAGE_Name}
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app:ro
+      - /app/node_modules
+    environment:
+      - PORT=${PORT}
+    env_file:
+      - ./.env
+

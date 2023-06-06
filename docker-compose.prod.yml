@@ -1,0 +1,12 @@
+version: "3"
+services:
+  node-app:
+    build: 
+      context: .
+      args:
+        NODE_ENV: production
+    container_name: node-akia-prod
+    image: ${IMAGE_Name}-prod
+    environment:
+      - NODE_ENV = production
+    command: node index.js
